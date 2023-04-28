@@ -3,7 +3,7 @@
   import { page } from "$app/stores";
 </script>
 
-<!-- <p>
+<p>
   {#if $page.data.session}
     <span class="signedInText">
       <small>Signed in as</small><br />
@@ -14,4 +14,4 @@
     <span class="notSignedInText">You are not signed in</span>
     <button on:click={() => signIn("github")}>Sign In with GitHub</button>
   {/if}
-</p> -->
+</p>
