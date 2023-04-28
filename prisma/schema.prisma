@@ -3,21 +3,25 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  name     String
-  fees     Fee[]
+  id   Int    @id @default(autoincrement())
+  name String
+  fees Fee[]
 }
 
 model Fee {
-  id      Int     @id @default(autoincrement())
+  id      Int    @id @default(autoincrement())
   comment String
+  amount  Int
   doneBy  String
-  user    User    @relation(fields: [userId], references: [id])
+  user    User   @relation(fields: [userId], references: [id])
   userId  Int
+  addedBy String
+
+  @@index([userId])
 }
