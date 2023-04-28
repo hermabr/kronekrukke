@@ -8,6 +8,7 @@
     <span class="signedInText">
       <small>Signed in as</small><br />
       <strong>{$page.data.session.user?.name ?? "User"}</strong>
+      <a href="/user">To users</a>
     </span>
     <button on:click={() => signOut()} class="button">Sign out</button>
   {:else}
