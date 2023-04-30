@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "(trap 'kill 0' SIGINT; pscale connect kronekrukke main --port 3309 & vite dev)",
 		"build": "prisma generate && vite build",
         "postinstall": "prisma generate",
 		"preview": "vite preview",

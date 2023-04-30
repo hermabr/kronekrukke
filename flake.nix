@@ -11,7 +11,7 @@
         nativeBuildInputs = [ pkgs.bashInteractive ];
         buildInputs = with pkgs; [
           pscale
-          # nodejs-slim
+          nodejs-slim
           nodePackages.pnpm
           nodePackages.npm
           nodePackages.prisma

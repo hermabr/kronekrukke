@@ -15,13 +15,13 @@ model User {
 }
 
 model Fee {
-  id      Int    @id @default(autoincrement())
+  id      Int      @id @default(autoincrement())
   comment String
   amount  Int
-  doneBy  String
-  user    User   @relation(fields: [userId], references: [id])
+  user    User     @relation(fields: [userId], references: [id])
   userId  Int
   addedBy String
+  addedAt DateTime @default(now())
 
   @@index([userId])
 }

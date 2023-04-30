@@ -1,5 +1,6 @@
 import prisma from "$lib/prisma";
 import { json } from "@sveltejs/kit";
+import type { RequestHandler } from "./$types";
 
 export async function GET() {
   const feed = await prisma.user.findMany({});
