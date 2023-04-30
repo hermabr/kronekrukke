@@ -43,7 +43,7 @@
       </div>
     </div>
   {:else}
-    <ul class="grid grid-cols-3 px-40 space-x-5 align-middle">
+    <ul class="grid grid-cols-1 px-40 space-x-5 align-middle lg:grid-cols-3">
       {#each fees as fee (fee.id)}
         <li class="px-6 py-4 text-gray-200 bg-gray-600 rounded">
           <div class="card-large">{fee.amount} kr</div>
