@@ -23,7 +23,7 @@
   const handleFormSubmit = async (event: Event) => {
     event.preventDefault();
 
-    const loadingToast = toast.loading("Creating fee...", {
+    const loadingToast = toast.loading("Lager avgift...", {
       position: "bottom-center",
     });
 
