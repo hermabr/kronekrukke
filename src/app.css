@@ -34,5 +34,5 @@
 }
 
 body {
-  padding-top: calc(var(--safe-area-top) + 20px);
+  padding-top: calc(var(--safe-area-top));
 }
