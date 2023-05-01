@@ -7,6 +7,10 @@
   import { Toaster } from "svelte-french-toast";
 </script>
 
+<svelte:head>
+  <link rel="manifest" href="%svelte.assets%/manifest.json" />
+</svelte:head>
+
 <Toaster />
 
 {#if $page.data.session}
