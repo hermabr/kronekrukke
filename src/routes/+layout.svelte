@@ -26,9 +26,15 @@
 <Toaster />
 
 {#if $page.data.session}
+  <!-- show username for page session -->
+  <p>
+    Name: {$page.data.session.user
+      ? $page.data.session.user.name
+      : "unknown name"}
+  </p>
   <slot />
 {:else}
-  <div class="flex flex-col items-center justify-center h-screen px-5">
+  <div class="flex items-center justify-center h-screen px-5 space-x-5">
     <button
       aria-label="Continue with github"
       class="flex items-center justify-center w-full px-4 py-3 mt-4 bg-white border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700"
@@ -47,9 +53,26 @@
         />
       </svg>
 
-      <p class="ml-4 text-base font-semibold text-gray-700">
-        Continue with Github
-      </p>
+      <!-- <p class="ml-4 text-base font-semibold text-gray-700">Login</p> -->
+    </button>
+
+    <button
+      aria-label="Continue with facebook"
+      class="flex items-center justify-center w-full px-4 py-3 mt-4 bg-white border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700"
+      on:click={() => signIn("facebook")}
+    >
+      <svg
+        width="30"
+        height="30"
+        viewBox="38.657999999999994 12.828 207.085 207.085"
+        xmlns="http://www.w3.org/2000/svg"
+        ><path
+          d="M158.232 219.912v-94.461h31.707l4.747-36.813h-36.454V65.134c0-10.658 2.96-17.922 18.245-17.922l19.494-.009V14.278c-3.373-.447-14.944-1.449-28.406-1.449-28.106 0-47.348 17.155-47.348 48.661v27.149H88.428v36.813h31.788v94.461l38.016-.001z"
+          fill="#3c5a9a"
+        /></svg
+      >
+
+      <!-- <p class="ml-4 text-base font-semibold text-gray-700">Login</p> -->
     </button>
   </div>
 {/if}
