@@ -10,6 +10,10 @@
 <svelte:head>
   <link rel="manifest" href="/manifest.json" />
   <title>Kronekrukke</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  />
 </svelte:head>
 
 <Toaster />
