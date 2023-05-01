@@ -14,6 +14,7 @@
     name="viewport"
     content="width=device-width, initial-scale=1, viewport-fit=cover"
   />
+  <meta name="robots" content="noindex" />
 </svelte:head>
 
 <Toaster />
