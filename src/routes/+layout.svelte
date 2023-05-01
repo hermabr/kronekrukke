@@ -15,6 +15,7 @@
     content="width=device-width, initial-scale=1, viewport-fit=cover"
   />
   <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#333333" />
 </svelte:head>
 
 <Toaster />
