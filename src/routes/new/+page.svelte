@@ -1,14 +1,15 @@
 <script lang="ts">
   import type { PageData } from "./$types";
   import toast from "svelte-french-toast";
+  import { goto } from "$app/navigation";
 
   export let data: PageData;
 
   $: ({ users } = data);
 
-  let selectedUser = 5;
-  let comment = "Wow - Huff";
-  let amount = 0;
+  let selectedUser = -1;
+  let comment = "";
+  let amount = 1;
 
   const handleFormSubmit = async (event: Event) => {
     event.preventDefault();
@@ -29,6 +30,7 @@
     const message = JSON.parse(response.data)[1];
     if (response["type"] == "success") {
       toast.success(message, { id: loadingToast });
+      goto("/");
     } else {
       toast.error(message, { id: loadingToast });
     }
@@ -53,6 +55,7 @@
             name="user"
             value={user.id}
             bind:group={selectedUser}
+            required
           />
           <label for={"user-" + user.id}>{user.name}</label>
         </div>
@@ -60,7 +63,7 @@
     </div>
     <div>
       <label for="comment" class="block">Comment:</label>
-      <input type="text" name="comment" bind:value={comment} />
+      <input type="text" name="comment" bind:value={comment} required />
     </div>
     <div>
       <label for="amount" class="block">Amount:</label>

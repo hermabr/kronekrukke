@@ -29,26 +29,4 @@ export const actions: Actions = {
       status: 201,
     };
   },
-
-  //   deleteUser: async ({ url }) => {
-  //     const id = url.searchParams.get("id");
-  //     if (!id) {
-  //       return fail(400, { message: "Invalid request" });
-  //     }
-  //     try {
-  //       await prisma.article.delete({
-  //         where: {
-  //           id: Number(id),
-  //         },
-  //       });
-  //     } catch (err) {
-  //       console.error(err);
-  //       return fail(500, {
-  //         message: "Something went wrong deleting your article",
-  //       });
-  //     }
-  //     return {
-  //       status: 200,
-  //     };
-  //   },
 };

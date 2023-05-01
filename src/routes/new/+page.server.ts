@@ -1,6 +1,6 @@
 import type { Actions, PageServerLoad } from "./$types";
 import prisma from "$lib/prisma";
-import { fail, json, text } from "@sveltejs/kit";
+import { fail, json, redirect, text } from "@sveltejs/kit";
 
 export const load: PageServerLoad = async () => {
   return {
