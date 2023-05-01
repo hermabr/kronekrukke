@@ -52,7 +52,7 @@
             class="flex justify-between px-6 py-4 text-gray-200 bg-gray-600 rounded"
           >
             <div>
-              <div class="text-2xl font-bold text-[#9BDEAC]">
+              <div class="text-2xl font-bold text-[#9BDEAC] comment-container">
                 {fee.comment}
               </div>
               <div>{fee.amount} kr - {fee.user.name}</div>
@@ -68,15 +68,15 @@
         </a>
       {:else}
         <li
-          class="flex justify-between px-6 py-4 text-gray-200 bg-gray-500 rounded"
+          class="flex justify-between max-w-full px-6 py-4 space-x-5 text-gray-200 bg-gray-500 rounded"
         >
           <div>
-            <div class="text-2xl font-bold text-[#9BDEAC]">
+            <div class="text-2xl font-bold text-[#9BDEAC] comment-container">
               {fee.comment}
             </div>
             <div>{fee.amount} kr - {fee.user.name}</div>
           </div>
-          <div class="flex flex-col justify-between text-right">
+          <div class="flex flex-col text-right">
             <div>{formatDate(fee.addedAt)}</div>
           </div>
         </li>
@@ -89,3 +89,10 @@
     >New fee</a
   >
 </div>
+
+<style>
+  .comment-container {
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+  }
+</style>
