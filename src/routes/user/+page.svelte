@@ -27,10 +27,18 @@
 
     const message = JSON.parse(response.data)[1];
     if (response["type"] == "success") {
-      toast.success(message, { id: loadingToast, position: "bottom-center" });
+      toast.success(message, {
+        id: loadingToast,
+        position: "bottom-center",
+        duration: 3000,
+      });
       // goto("/");
     } else {
-      toast.error(message, { id: loadingToast, position: "bottom-center" });
+      toast.error(message, {
+        id: loadingToast,
+        position: "bottom-center",
+        duration: 3000,
+      });
     }
   };
 </script>

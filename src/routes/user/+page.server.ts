@@ -27,6 +27,7 @@ export const actions: Actions = {
 
     return {
       status: 201,
+      message: `User ${name} created`,
     };
   },
 };
