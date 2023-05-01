@@ -13,14 +13,22 @@
 }
 
 @layer utilities {
-.no-scrollbar::-webkit-scrollbar {
-    display: none;
-}
+  .clip-circSmall {
+    clip-path: circle(1.5rem at calc(100% - 2.5rem) 2.5rem);
+  }
 
-.no-scrollbar {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-}
+  .clip-circFull {
+    clip-path: circle(100%);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+      display: none;
+  }
+
+  .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+  }
 }
 
 @supports (-webkit-touch-callout: none) {

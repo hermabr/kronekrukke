@@ -48,16 +48,9 @@
 </script>
 
 <div class="flex flex-col h-screen p-3 space-y-3">
-  <div class="flex items-center justify-between">
-    <button on:click={() => goto("/", { invalidateAll: true })}>
-      <h1 class="text-4xl font-bold text-main">Avgift</h1>
-    </button>
-    <a
-      href="/bruker"
-      class="px-4 py-3 text-xl font-semibold text-gray-300 bg-gray-700 rounded"
-      >Brukere</a
-    >
-  </div>
+  <button on:click={() => goto("/", { invalidateAll: true })}>
+    <h1 class="py-2 text-4xl font-bold text-left text-main">Avgift</h1>
+  </button>
   <ul
     class="grid flex-grow grid-cols-1 space-y-4 overflow-y-scroll no-scrollbar"
   >
@@ -72,7 +65,7 @@
         >
           <div>
             <div
-              class="text-2xl font-bold text-[#9BDEAC]"
+              class="text-2xl font-bold text-green-300"
               style="word-wrap: break-word; overflow-wrap: anywhere;"
             >
               {fee.comment}

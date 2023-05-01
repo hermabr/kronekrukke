@@ -86,14 +86,9 @@
 </script>
 
 <div class="m-3">
-  <div class="flex items-center justify-between">
-    <h1 class="text-4xl font-bold text-main">Endre avgift</h1>
-    <a
-      href="/"
-      class="px-4 py-3 text-xl font-semibold text-gray-300 bg-gray-700 rounded"
-      >Tilbake</a
-    >
-  </div>
+  <button on:click={() => goto("/", { invalidateAll: true })}>
+    <h1 class="py-2 text-4xl font-bold text-left text-main">Endre avgift</h1>
+  </button>
   <form
     method="POST"
     class="flex flex-col space-y-3"
