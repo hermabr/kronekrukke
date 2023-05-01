@@ -6,6 +6,7 @@ export const load: PageServerLoad = async () => {
     fees: await prisma.fee.findMany({
       include: { user: { select: { name: true, id: true } } },
       orderBy: { id: "desc" },
+      take: 10,
     }),
   };
 };

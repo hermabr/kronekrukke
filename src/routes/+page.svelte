@@ -2,6 +2,7 @@
   import type { PageData } from "./$types";
   import { page } from "$app/stores";
   import ConditionalLinkWrapper from "$lib/components/ConditionalLinkWrapper.svelte";
+  import { onMount } from "svelte";
 
   export let data: PageData;
 
@@ -30,6 +31,17 @@
         : "unknown"
       : "unknown"
     : "unknown";
+
+  onMount(async () => {
+    const response = await fetch("/api/avgift");
+    const newFees = await response.json();
+
+    newFees.forEach((fee: { addedAt: string | number | Date }) => {
+      fee.addedAt = new Date(fee.addedAt);
+    });
+
+    fees = newFees;
+  });
 
   $: ({ fees } = data);
 </script>
