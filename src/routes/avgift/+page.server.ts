@@ -24,7 +24,9 @@ export const actions: Actions = {
 
     const amount = Number(amountStr);
     if (!Number.isInteger(amount) || amount <= 0) {
-      return fail(400, { message: "Amount must be a positive whole number" });
+      return fail(400, {
+        message: `Antall fortredelser må være et tall. Fant ${amountStr}`,
+      });
     }
 
     try {
@@ -41,11 +43,11 @@ export const actions: Actions = {
         },
       });
     } catch (err) {
-      return fail(500, { message: "Could not create the fee." });
+      return fail(500, { message: `Klarte ikke å lage avgift ${comment}` });
     }
 
     return {
-      message: "Fee created",
+      message: `Laget avgift ${comment}`,
     };
   },
 };

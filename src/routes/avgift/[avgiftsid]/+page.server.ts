@@ -37,7 +37,9 @@ export const actions: Actions = {
 
     const amount = Number(amountStr);
     if (!Number.isInteger(amount) || amount <= 0) {
-      return fail(400, { message: "Amount must be a positive whole number" });
+      return fail(400, {
+        message: `Antall fortredelser må være et tall. Fant ${amountStr}`,
+      });
     }
 
     const existingFee = await prisma.fee.findUnique({
@@ -46,12 +48,12 @@ export const actions: Actions = {
       },
     });
     if (!existingFee) {
-      return fail(404, { message: "Fee not found" });
+      return fail(404, { message: `Fant ikke avgiften ${comment}` });
     }
 
     if (existingFee.addedBy !== addedBy) {
       return fail(403, {
-        message: "You are not authorized to update this fee",
+        message: `Du har ikke tilgang til å endre ${comment}. Snakk med ${addedBy}`,
       });
     }
 
@@ -68,11 +70,11 @@ export const actions: Actions = {
       });
     } catch (err) {
       console.error(err);
-      return fail(500, { message: "Could not update article" });
+      return fail(500, { message: `Klarte ikke å oppdatere ${comment}` });
     }
 
     return {
-      message: `Successfully updated ${comment}`,
+      message: `Oppdaterte avgiften til ${comment}`,
     };
   },
   slettAvgift: async ({ request, params }) => {
@@ -86,12 +88,12 @@ export const actions: Actions = {
       },
     });
     if (!existingFee) {
-      return fail(404, { message: "Fee not found" });
+      return fail(404, { message: `Fant ikke avgiften` });
     }
 
     if (existingFee.addedBy !== addedBy) {
       return fail(403, {
-        message: "You are not authorized to update this fee",
+        message: `Du har ikke tilgang til å slette ${existingFee.comment}. Snakk med ${addedBy}`,
       });
     }
 
@@ -103,11 +105,13 @@ export const actions: Actions = {
       });
     } catch (err) {
       console.error(err);
-      return fail(500, { message: "Could not delete fee" });
+      return fail(500, {
+        message: `Klarte ikke å slette ${existingFee.comment}`,
+      });
     }
 
     return {
-      message: `Successfully deleted fee with ID ${params.avgiftsid}`,
+      message: `Slettet avgiften ${existingFee.comment}`,
     };
   },
 };
