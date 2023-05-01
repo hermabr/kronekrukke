@@ -1,7 +1,7 @@
 <script lang="ts">
   import { toast } from "svelte-french-toast";
   import type { PageData } from "./$types";
-  // import { goto } from "$app/navigation";
+  import { goto } from "$app/navigation";
 
   export let data: PageData;
 
@@ -26,13 +26,15 @@
     }).then((r) => r.json());
 
     const message = JSON.parse(response.data)[1];
+    console.log("Message");
+    console.log(message);
     if (response["type"] == "success") {
       toast.success(message, {
         id: loadingToast,
         position: "bottom-center",
         duration: 3000,
       });
-      // goto("/");
+      goto("/user");
     } else {
       toast.error(message, {
         id: loadingToast,
