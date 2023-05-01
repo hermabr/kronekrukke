@@ -28,3 +28,11 @@
     height: -webkit-fill-available;
   }
 }
+
+:root {
+  --safe-area-top: env(safe-area-inset-top);
+}
+
+body {
+  padding-top: calc(var(--safe-area-top) + 20px);
+}
