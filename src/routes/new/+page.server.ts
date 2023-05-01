@@ -14,10 +14,12 @@ export const actions: Actions = {
       comment,
       amount: amountStr,
       user,
+      addedBy,
     } = Object.fromEntries(await request.formData()) as {
       comment: string;
       amount: string;
       user: string;
+      addedBy: string;
     };
 
     const amount = Number(amountStr);
@@ -31,8 +33,6 @@ export const actions: Actions = {
     if (!userRecord) {
       return fail(400, { message: "User does not exist" });
     }
-
-    const addedBy = "admin";
 
     try {
       await prisma.fee.create({

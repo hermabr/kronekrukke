@@ -2,6 +2,7 @@
   import type { PageData } from "./$types";
   import toast from "svelte-french-toast";
   import { goto } from "$app/navigation";
+  import { page } from "$app/stores";
 
   export let data: PageData;
 
@@ -10,6 +11,16 @@
   let selectedUser = -1;
   let comment = "";
   let amount = 1;
+
+  const getLoginName = () => {
+    return $page.data.session
+      ? $page.data.session.user
+        ? typeof $page.data.session.user.name === "string"
+          ? $page.data.session.user.name
+          : "unknown"
+        : "unknown"
+      : "unknown";
+  };
 
   const handleFormSubmit = async (event: Event) => {
     event.preventDefault();
@@ -22,6 +33,7 @@
     formData.append("user", selectedUser.toString());
     formData.append("comment", comment);
     formData.append("amount", amount.toString());
+    formData.append("addedBy", getLoginName());
 
     // get the json response
     const response = await fetch("?/createFee", {

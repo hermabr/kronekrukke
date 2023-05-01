@@ -26,17 +26,6 @@
 <Toaster />
 
 {#if $page.data.session}
-  <!-- show username for page session -->
-  <p>
-    Name: {$page.data.session.user
-      ? $page.data.session.user.name
-      : "unknown name"}
-  </p>
-  <p>
-    Email: {$page.data.session.user
-      ? $page.data.session.user.email
-      : "unknown email"}
-  </p>
   <slot />
 {:else}
   <div class="flex items-center justify-center h-screen px-5 space-x-5">
