@@ -33,7 +33,9 @@
       : "unknown name"}
   </p>
   <p>
-    Id: {$page.data.session.user ? $page.data.session.user.id : "unknown id"}
+    Email: {$page.data.session.user
+      ? $page.data.session.user.email
+      : "unknown email"}
   </p>
   <slot />
 {:else}
