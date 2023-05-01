@@ -75,4 +75,39 @@ export const actions: Actions = {
       message: `Successfully updated ${comment}`,
     };
   },
+  slettAvgift: async ({ request, params }) => {
+    const { addedBy } = Object.fromEntries(await request.formData()) as {
+      addedBy: string;
+    };
+
+    const existingFee = await prisma.fee.findUnique({
+      where: {
+        id: Number(params.avgiftsid),
+      },
+    });
+    if (!existingFee) {
+      return fail(404, { message: "Fee not found" });
+    }
+
+    if (existingFee.addedBy !== addedBy) {
+      return fail(403, {
+        message: "You are not authorized to update this fee",
+      });
+    }
+
+    try {
+      await prisma.fee.delete({
+        where: {
+          id: Number(params.avgiftsid),
+        },
+      });
+    } catch (err) {
+      console.error(err);
+      return fail(500, { message: "Could not delete fee" });
+    }
+
+    return {
+      message: `Successfully deleted fee with ID ${params.avgiftsid}`,
+    };
+  },
 };

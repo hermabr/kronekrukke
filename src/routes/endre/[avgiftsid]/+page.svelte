@@ -2,10 +2,19 @@
   import type { PageData } from "./$types";
   import toast from "svelte-french-toast";
   import { goto } from "$app/navigation";
+  import { page } from "$app/stores";
 
   export let data: PageData;
 
   $: ({ avgift, users } = data);
+
+  const username = $page.data.session
+    ? $page.data.session.user
+      ? typeof $page.data.session.user.name === "string"
+        ? $page.data.session.user.name
+        : "unknown"
+      : "unknown"
+    : "unknown";
 
   const handleFormSubmit = async (event: Event) => {
     event.preventDefault();
@@ -18,9 +27,42 @@
     formData.append("userId", avgift.userId.toString());
     formData.append("comment", avgift.comment);
     formData.append("amount", avgift.amount.toString());
-    formData.append("addedBy", avgift.addedBy);
+    formData.append("addedBy", username);
 
     const response = await fetch(`./${avgift.id}?/endreAvgift`, {
+      method: "POST",
+      body: formData,
+    }).then((r) => r.json());
+
+    const message = JSON.parse(response.data)[1];
+    if (response["type"] == "success") {
+      toast.success(message, {
+        id: loadingToast,
+        position: "bottom-center",
+        duration: 3000,
+      });
+      goto("/", { invalidateAll: true, replaceState: true });
+    } else {
+      toast.error(message, {
+        id: loadingToast,
+        position: "bottom-center",
+        duration: 3000,
+      });
+    }
+  };
+
+  const handleDelete = async () => {
+    const confirmation = confirm("Are you sure you want to delete this fee?");
+    if (!confirmation) return;
+
+    const loadingToast = toast.loading("Deleting fee...", {
+      position: "bottom-center",
+    });
+
+    const formData = new FormData();
+    formData.append("addedBy", username);
+
+    const response = await fetch(`./${avgift.id}?/slettAvgift`, {
       method: "POST",
       body: formData,
     }).then((r) => r.json());
@@ -80,4 +122,11 @@
       >
     </div>
   </form>
+  <div class="mt-3">
+    <button
+      type="button"
+      class="px-8 py-4 bg-red-600 rounded"
+      on:click={handleDelete}>Delete</button
+    >
+  </div>
 </div>
