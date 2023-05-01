@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { PageData } from "./$types";
   import { page } from "$app/stores";
+  import ConditionalLinkWrapper from "$lib/components/ConditionalLinkWrapper.svelte";
 
   export let data: PageData;
 
@@ -46,41 +47,32 @@
     class="grid flex-grow grid-cols-1 space-y-4 overflow-y-scroll no-scrollbar"
   >
     {#each fees as fee (fee.id)}
-      {#if fee.addedBy === username}
-        <a href="/endre/{fee.id}">
-          <li
-            class="flex justify-between px-6 py-4 text-gray-200 bg-gray-600 rounded"
-          >
-            <div>
-              <div class="text-2xl font-bold text-[#9BDEAC] comment-container">
-                {fee.comment}
-              </div>
-              <div>{fee.amount} kr - {fee.user.name}</div>
-            </div>
-            <div class="flex flex-col justify-between text-right">
-              <div>{formatDate(fee.addedAt)}</div>
-
-              {#if fee.addedBy === username}
-                <div class="text-right">Edit</div>
-              {/if}
-            </div>
-          </li>
-        </a>
-      {:else}
+      <ConditionalLinkWrapper
+        href={fee.addedBy === username ? `/endre/${fee.id}` : ""}
+      >
         <li
-          class="flex justify-between max-w-full px-6 py-4 space-x-5 text-gray-200 bg-gray-500 rounded"
+          class="flex justify-between px-6 py-4 text-gray-200 rounded"
+          class:bg-gray-600={fee.addedBy === username}
+          class:bg-gray-700={fee.addedBy !== username}
         >
           <div>
-            <div class="text-2xl font-bold text-[#9BDEAC] comment-container">
+            <div
+              class="text-2xl font-bold text-[#9BDEAC]"
+              style="word-wrap: break-word; overflow-wrap: anywhere;"
+            >
               {fee.comment}
             </div>
             <div>{fee.amount} kr - {fee.user.name}</div>
           </div>
-          <div class="flex flex-col text-right">
+          <div class="flex flex-col justify-between text-right">
             <div>{formatDate(fee.addedAt)}</div>
+
+            {#if fee.addedBy === username}
+              <div class="text-right">Edit</div>
+            {/if}
           </div>
         </li>
-      {/if}
+      </ConditionalLinkWrapper>
     {/each}
   </ul>
   <a
@@ -89,10 +81,3 @@
     >New fee</a
   >
 </div>
-
-<style>
-  .comment-container {
-    word-wrap: break-word;
-    overflow-wrap: anywhere;
-  }
-</style>
