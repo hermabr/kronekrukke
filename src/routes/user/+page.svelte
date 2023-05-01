@@ -34,7 +34,8 @@
         position: "bottom-center",
         duration: 3000,
       });
-      goto("/user");
+      name = "";
+      goto("/user", { invalidateAll: true });
     } else {
       toast.error(message, {
         id: loadingToast,

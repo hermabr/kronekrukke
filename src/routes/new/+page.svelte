@@ -31,10 +31,18 @@
 
     const message = JSON.parse(response.data)[1];
     if (response["type"] == "success") {
-      toast.success(message, { id: loadingToast, position: "bottom-center" });
+      toast.success(message, {
+        id: loadingToast,
+        position: "bottom-center",
+        duration: 3000,
+      });
       goto("/");
     } else {
-      toast.error(message, { id: loadingToast, position: "bottom-center" });
+      toast.error(message, {
+        id: loadingToast,
+        position: "bottom-center",
+        duration: 3000,
+      });
     }
   };
 </script>
@@ -72,11 +80,8 @@
       <input type="number" name="amount" bind:value={amount} />
     </div>
     <div>
-      <input
-        type="submit"
-        value="Create"
-        class="px-8 py-4 bg-gray-700 rounded"
-      />
+      <button type="submit" class="px-8 py-4 bg-gray-700 rounded">Create</button
+      >
     </div>
   </form>
 </div>

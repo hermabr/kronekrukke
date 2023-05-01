@@ -53,7 +53,6 @@ export const actions: Actions = {
 
     return {
       message: "Fee created",
-      status: 201,
     };
   },
 };
