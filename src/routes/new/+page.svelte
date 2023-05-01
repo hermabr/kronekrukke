@@ -14,7 +14,9 @@
   const handleFormSubmit = async (event: Event) => {
     event.preventDefault();
 
-    const loadingToast = toast.loading("Creating fee...");
+    const loadingToast = toast.loading("Creating fee...", {
+      position: "bottom-center",
+    });
 
     const formData = new FormData();
     formData.append("user", selectedUser.toString());
@@ -29,10 +31,10 @@
 
     const message = JSON.parse(response.data)[1];
     if (response["type"] == "success") {
-      toast.success(message, { id: loadingToast });
+      toast.success(message, { id: loadingToast, position: "bottom-center" });
       goto("/");
     } else {
-      toast.error(message, { id: loadingToast });
+      toast.error(message, { id: loadingToast, position: "bottom-center" });
     }
   };
 </script>
