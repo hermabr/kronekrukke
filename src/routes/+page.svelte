@@ -48,9 +48,17 @@
 </script>
 
 <div class="flex flex-col h-screen p-3 space-y-3">
-  <button on:click={() => goto("/", { invalidateAll: true })}>
-    <h1 class="py-2 text-4xl font-bold text-left text-main">Avgift</h1>
-  </button>
+  <div class="flex justify-between">
+    <button on:click={() => goto("/", { invalidateAll: true })}>
+      <h1 class="py-2 text-4xl font-bold text-left text-main">Avgift</h1>
+    </button>
+    <a
+      href="/bruker"
+      class="grid items-center px-4 py-2 text-xl font-bold text-left text-gray-200 bg-gray-600 rounded place-items-center"
+    >
+      Brukere
+    </a>
+  </div>
   <ul
     class="grid flex-grow grid-cols-1 space-y-4 overflow-y-scroll no-scrollbar"
   >

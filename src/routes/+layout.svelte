@@ -27,7 +27,6 @@
 <Toaster />
 
 {#if $page.data.session}
-  <Navbar />
   <slot />
 {:else}
   <div class="flex items-center justify-center h-screen px-5 space-x-5">
@@ -54,3 +53,6 @@
     </button>
   </div>
 {/if}
+
+<!-- <Navbar /> -->
+<!-- <slot /> -->
