@@ -50,7 +50,7 @@
     <h1 class="text-4xl font-bold text-main">Brukere</h1>
     <a
       href="/"
-      class="px-4 py-3 text-xl font-semibold text-blue-500 bg-gray-300 rounded"
+      class="px-4 py-3 text-xl font-semibold text-gray-300 bg-gray-700 rounded"
       >Tilbake</a
     >
   </div>
@@ -60,12 +60,12 @@
         type="text"
         name="name"
         placeholder="Name"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
         bind:value={name}
       />
       <button
         type="submit"
-        class="px-8 py-4 mt-5 font-semibold text-gray-200 bg-blue-500 rounded"
+        class="px-8 py-2.5 mt-5 font-semibold text-gray-200 bg-blue-500 rounded"
       >
         Legg til</button
       >

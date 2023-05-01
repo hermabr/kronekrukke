@@ -54,7 +54,7 @@
     </button>
     <a
       href="/bruker"
-      class="px-4 py-3 text-xl font-semibold text-blue-500 bg-gray-300 rounded"
+      class="px-4 py-3 text-xl font-semibold text-gray-300 bg-gray-700 rounded"
       >Brukere</a
     >
   </div>

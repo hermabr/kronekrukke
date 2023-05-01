@@ -86,9 +86,14 @@
 </script>
 
 <div class="m-3">
-  <h1 class="mb-4 text-4xl font-bold text-gray-200">Edit Fee</h1>
-
-  <a href="/" class="inline-block px-8 py-4 mb-3 bg-gray-700 rounded">Back</a>
+  <div class="flex items-center justify-between">
+    <h1 class="text-4xl font-bold text-main">Endre avgift</h1>
+    <a
+      href="/"
+      class="px-4 py-3 text-xl font-semibold text-gray-300 bg-gray-700 rounded"
+      >Tilbake</a
+    >
+  </div>
   <form
     method="POST"
     class="flex flex-col space-y-3"
@@ -110,23 +115,45 @@
       {/each}
     </div>
     <div>
-      <label for="comment" class="block">Comment:</label>
-      <input type="text" name="comment" bind:value={avgift.comment} required />
+      <label for="comment" class="block mb-2 text-lg font-medium"
+        >Comment:</label
+      >
+      <input
+        type="text"
+        name="comment"
+        bind:value={avgift.comment}
+        required
+        class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+      />
     </div>
     <div>
-      <label for="amount" class="block">Amount:</label>
-      <input type="number" name="amount" bind:value={avgift.amount} required />
+      <label for="amount" class="block mb-2 text-lg font-medium">Amount:</label>
+      <input
+        type="number"
+        name="amount"
+        bind:value={avgift.amount}
+        required
+        class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+      />
     </div>
-    <div>
-      <button type="submit" class="px-8 py-4 bg-gray-700 rounded">Update</button
+    <div class="flex pt-5 space-x-5">
+      <button
+        type="submit"
+        class="flex-1 px-8 py-4 font-semibold text-gray-200 bg-blue-500 rounded"
+        >Update</button
+      >
+      <button
+        type="button"
+        class="flex-1 px-8 py-4 font-semibold text-gray-200 bg-red-500 rounded"
+        on:click={handleDelete}>Delete</button
       >
     </div>
   </form>
-  <div class="mt-3">
+  <!-- <div class="mt-3">
     <button
       type="button"
       class="px-8 py-4 bg-red-600 rounded"
       on:click={handleDelete}>Delete</button
     >
-  </div>
+  </div> -->
 </div>

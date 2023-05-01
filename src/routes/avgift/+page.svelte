@@ -62,7 +62,7 @@
     <h1 class="text-4xl font-bold text-main">Ny avgift</h1>
     <a
       href="/"
-      class="px-4 py-3 text-xl font-semibold text-blue-500 bg-gray-300 rounded"
+      class="px-4 py-3 text-xl font-semibold text-gray-300 bg-gray-700 rounded"
       >Tilbake</a
     >
   </div>
@@ -93,7 +93,7 @@
         type="text"
         name="comment"
         bind:value={comment}
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
       />
     </div>
     <div>
@@ -105,7 +105,7 @@
         name="amount"
         min="1"
         bind:value={amount}
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        class="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
       />
     </div>
     <div>
