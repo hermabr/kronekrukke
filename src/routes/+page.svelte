@@ -3,6 +3,7 @@
   import { page } from "$app/stores";
   import ConditionalLinkWrapper from "$lib/components/ConditionalLinkWrapper.svelte";
   import { onMount } from "svelte";
+  import { goto } from "$app/navigation";
 
   export let data: PageData;
 
@@ -48,11 +49,13 @@
 
 <div class="flex flex-col h-screen p-3 space-y-3">
   <div class="flex items-center justify-between">
-    <h1 class="text-4xl font-bold text-main">Fees</h1>
+    <button on:click={() => goto("/", { invalidateAll: true })}>
+      <h1 class="text-4xl font-bold text-main">Avgift</h1>
+    </button>
     <a
-      href="/user"
+      href="/bruker"
       class="px-4 py-3 text-xl font-semibold text-blue-500 bg-gray-300 rounded"
-      >New user</a
+      >Brukere</a
     >
   </div>
   <ul
@@ -60,7 +63,7 @@
   >
     {#each fees as fee (fee.id)}
       <ConditionalLinkWrapper
-        href={fee.addedBy === username ? `/endre/${fee.id}` : ""}
+        href={fee.addedBy === username ? `/avgift/${fee.id}` : ""}
       >
         <li
           class="flex justify-between px-6 py-4 text-gray-200 rounded"
@@ -88,8 +91,8 @@
     {/each}
   </ul>
   <a
-    href="/new"
-    class="block py-5 mt-5 text-2xl font-bold text-center text-blue-500 bg-gray-300 rounded"
-    >New fee</a
+    href="/avgift"
+    class="block py-5 mt-5 text-2xl font-bold text-center text-gray-200 bg-blue-500 rounded"
+    >Ny avgift</a
   >
 </div>

@@ -19,7 +19,6 @@
     const formData = new FormData();
     formData.append("name", name);
 
-    // get the json response
     const response = await fetch("?/createUser", {
       method: "POST",
       body: formData,
@@ -35,7 +34,7 @@
         duration: 3000,
       });
       name = "";
-      goto("/user", { invalidateAll: true });
+      goto("/bruker", { invalidateAll: true });
     } else {
       toast.error(message, {
         id: loadingToast,
@@ -48,24 +47,27 @@
 
 <div class="m-3">
   <div class="flex items-center justify-between">
-    <h1 class="text-4xl font-bold text-gray-200">Users</h1>
+    <h1 class="text-4xl font-bold text-main">Brukere</h1>
     <a
       href="/"
       class="px-4 py-3 text-xl font-semibold text-blue-500 bg-gray-300 rounded"
-      >Home</a
+      >Tilbake</a
     >
   </div>
   <main>
-    <form on:submit={handleFormSubmit} class="flex flex-col w-64 my-8">
+    <form on:submit={handleFormSubmit} class="flex flex-col my-8">
       <input
         type="text"
         name="name"
         placeholder="Name"
-        class="px-1 py-1 text-black border border-gray-400 rounded"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         bind:value={name}
       />
-      <button type="submit" class="mt-2 text-lg text-white bg-blue-500 rounded">
-        Add new user</button
+      <button
+        type="submit"
+        class="px-8 py-4 mt-5 font-semibold text-gray-200 bg-blue-500 rounded"
+      >
+        Legg til</button
       >
     </form>
     <div>

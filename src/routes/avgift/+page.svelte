@@ -58,9 +58,14 @@
 </script>
 
 <div class="m-3">
-  <h1 class="mb-4 text-4xl font-bold text-gray-200">New</h1>
-
-  <a href="/" class="inline-block px-8 py-4 mb-3 bg-gray-700 rounded">Back</a>
+  <div class="flex items-center justify-between mb-5">
+    <h1 class="text-4xl font-bold text-main">Ny avgift</h1>
+    <a
+      href="/"
+      class="px-4 py-3 text-xl font-semibold text-blue-500 bg-gray-300 rounded"
+      >Tilbake</a
+    >
+  </div>
   <form
     method="POST"
     class="flex flex-col space-y-3"
@@ -82,15 +87,32 @@
       {/each}
     </div>
     <div>
-      <label for="comment" class="block">Comment:</label>
-      <input type="text" name="comment" bind:value={comment} required />
+      <label for="comment" class="block mb-2 text-lg font-medium">Utsagn:</label
+      >
+      <input
+        type="text"
+        name="comment"
+        bind:value={comment}
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      />
     </div>
     <div>
-      <label for="amount" class="block">Amount:</label>
-      <input type="number" name="amount" bind:value={amount} />
+      <label for="amount" class="block mb-2 text-lg font-medium"
+        >Antall fortredelser:</label
+      >
+      <input
+        type="number"
+        name="amount"
+        min="1"
+        bind:value={amount}
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      />
     </div>
     <div>
-      <button type="submit" class="px-8 py-4 bg-gray-700 rounded">Create</button
+      <button
+        type="submit"
+        class="px-8 py-4 mt-5 font-semibold text-gray-200 bg-blue-500 rounded"
+        >Legg til</button
       >
     </div>
   </form>
