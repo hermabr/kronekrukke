@@ -27,6 +27,16 @@
           <td class="px-4 py-2">{count}</td>
         </tr>
       {/each}
+
+      <tr class="bg-green-500">
+        <td class="px-4 py-2">Totalt</td>
+        <td class="px-4 py-2" />
+        <td class="px-4 py-2"
+          >{leaderboard
+            .map((x) => x.userRank)
+            .reduce((a, b) => a + Number(b), 0)}</td
+        >
+      </tr>
     </tbody>
   </table>
 </div>
