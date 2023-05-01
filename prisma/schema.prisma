@@ -10,18 +10,19 @@ datasource db {
 
 model User {
   id   Int    @id @default(autoincrement())
-  name String
+  name String @unique
   fees Fee[]
 }
 
 model Fee {
-  id      Int      @id @default(autoincrement())
-  comment String
-  amount  Int
-  user    User     @relation(fields: [userId], references: [id])
-  userId  Int
-  addedBy String
-  addedAt DateTime @default(now())
+  id        Int      @id @default(autoincrement())
+  comment   String
+  amount    Int
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  addedBy   String
+  addedAt   DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@index([userId])
 }

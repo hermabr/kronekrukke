@@ -43,13 +43,8 @@ fees = [
     {"comment": "wow - vov", "amount": 1, "userId": 5, "addedBy": "Jakob"},
 ]
 
-import time
-import random
-
 for fee in fees:
     print("Posting fee", fee["comment"])
     response = requests.post("http://localhost:5173/api/fee", headers=headers, json=fee)
     print(response.text)
     print()
-    if fee != fees[-1]:
-        time.sleep(random.random()*3+1)
