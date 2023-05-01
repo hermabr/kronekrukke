@@ -13,25 +13,18 @@ export const actions: Actions = {
     const {
       comment,
       amount: amountStr,
-      user,
+      userId,
       addedBy,
     } = Object.fromEntries(await request.formData()) as {
       comment: string;
       amount: string;
-      user: string;
+      userId: string;
       addedBy: string;
     };
 
     const amount = Number(amountStr);
     if (!Number.isInteger(amount) || amount <= 0) {
       return fail(400, { message: "Amount must be a positive whole number" });
-    }
-
-    const userRecord = await prisma.user.findUnique({
-      where: { id: Number(user) },
-    });
-    if (!userRecord) {
-      return fail(400, { message: "User does not exist" });
     }
 
     try {
@@ -41,7 +34,7 @@ export const actions: Actions = {
           amount,
           user: {
             connect: {
-              id: userRecord.id,
+              id: Number(userId),
             },
           },
           addedBy,

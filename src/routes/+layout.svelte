@@ -25,7 +25,7 @@
 
 <Toaster />
 
-{#if $page.data.session}
+<!-- {#if $page.data.session}
   <slot />
 {:else}
   <div class="flex items-center justify-center h-screen px-5 space-x-5">
@@ -46,8 +46,11 @@
           fill="#333333"
         />
       </svg>
-
-      <!-- <p class="ml-4 text-base font-semibold text-gray-700">Login</p> -->
+      <p class="ml-4 text-base font-semibold text-gray-700">
+        Login with Github
+      </p>
     </button>
   </div>
-{/if}
+{/if} -->
+
+<slot />
