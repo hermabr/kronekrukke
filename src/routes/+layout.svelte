@@ -16,6 +16,11 @@
   />
   <meta name="robots" content="noindex" />
   <meta name="theme-color" content="#333333" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+  />
 </svelte:head>
 
 <Toaster />
