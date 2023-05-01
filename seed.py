@@ -1,50 +1,48 @@
-import requests
-
 names = [
-    "Jakob Sønstebø",
-    "Herman Brunborg",
-    "Julie Bjørnstad",
-    "Ben Bjørsvik",
-    "Carl Fredrik Nordbø Knutsen",
-    "Gaute Johannessen",
-    "Emma Storberg",
-    "August Gude",
-    "Yasmine Krukkenes-Gomez",
+   ("JS","Jakob Sønstebø"),
+   ("HB","Herman Brunborg"),
+   ("JB","Julie Bjørnstad"),
+   ("BB","Ben Bjørsvik"),
+   ("CF","Carl Fredrik Nordbø Knutsen"),
+   ("GJ","Gaute Johannessen"),
+   ("ES","Emma Storberg"),
+   ("OH","Oskar August Bonafede Heggernes"),
+   ("AG","August Gude"),
+   ("JH","Junmiao Hu"),
+   ("YG","Yasmine Krukkenes-Gomez"),
+   ("TD","Trajan Dobrev"),
+   ("ME","Marie Engebø"),
+   ("ST","Sofie Thelin"),
+   ("SS","Sveinung Sandal"),
+   ("JW","Jonatan Winsvold"),
 ]
 
-url = 'http://localhost:5173/api/user'
+payload_user = "INSERT INTO User (name) VALUES"
+payload_user += ",".join(f" ('{name[1]}')" for name in names)
+payload_user += ";"
+#  print(payload_user)
 
-headers = {
-    'Accept': '*/*',
-    'Accept-Language': 'en-US,en;q=0.9',
-    'Connection': 'keep-alive',
-    'Content-Type': 'application/json',
-    'Origin': 'http://localhost:5173',
-    'Referer': 'http://localhost:5173/user',
-    'Sec-Fetch-Dest': 'empty',
-    'Sec-Fetch-Mode': 'cors',
-    'Sec-Fetch-Site': 'same-origin',
-    'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36',
-    'sec-ch-ua': '"Not:A-Brand";v="99", "Chromium";v="112"',
-    'sec-ch-ua-mobile': '?0',
-    'sec-ch-ua-platform': '"Linux"',
-}
+rows = []
 
-for name in names:
-    print("Adding", name)
-    data = {"name": name}
-    response = requests.post(url, headers=headers, json=data)
-    print(response.text)
-    print()
+with open("fees.csv") as f:
+    data = f.read().split("\n")[:-1]
 
-fees = [
-    {"comment": "nice - majs", "amount": 1, "userId": 5, "addedBy": "Herman Brunborg"},
-    {"comment": "wow", "amount": 2, "userId": 1, "addedBy": "Admin"},
-    {"comment": "wow - vov", "amount": 1, "userId": 5, "addedBy": "Jakob"},
-]
+for row in data:
+    amount, short_name, comment = row.split(";")
 
-for fee in fees:
-    print("Posting fee", fee["comment"])
-    response = requests.post("http://localhost:5173/api/fee", headers=headers, json=fee)
-    print(response.text)
-    print()
+    name = ""
+    for sn, n in names:
+        if sn == short_name:
+            name = n
+            break
+    if name == "":
+        print("Name not found for", short_name)
+        exit()
+
+    #  print(amount, name, comment)
+    rows.append(
+    f"('{comment}', {amount}, (SELECT id FROM User WHERE name = '{name}'), 'admin', CURRENT_TIMESTAMP)"
+            )
+#  sql_fee = "INSERT INTO Fee (comment, amount, userId, addedBy) VALUES" + ",".join(rows) + ";"
+sql_fee ="INSERT INTO Fee (comment, amount, userId, addedBy, updatedAt) VALUES " + ",".join(rows) + ";"
+print(sql_fee)
