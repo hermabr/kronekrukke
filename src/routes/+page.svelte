@@ -83,7 +83,7 @@
             <div>{formatDate(fee.addedAt)}</div>
 
             {#if fee.addedBy === username}
-              <div class="text-right">Edit</div>
+              <div class="text-right">Endre</div>
             {/if}
           </div>
         </li>
