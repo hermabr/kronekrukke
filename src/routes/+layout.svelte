@@ -26,7 +26,7 @@
 
 <Toaster />
 
-<!-- {#if $page.data.session}
+{#if $page.data.session}
   <Navbar />
   <slot />
 {:else}
@@ -53,7 +53,4 @@
       </p>
     </button>
   </div>
-{/if} -->
-
-<Navbar />
-<slot />
+{/if}
