@@ -39,4 +39,10 @@
       </tr>
     </tbody>
   </table>
+
+  <a
+    href="/bruker"
+    class="inline-block px-8 py-4 mt-5 font-semibold text-gray-200 bg-blue-500 rounded"
+    >Legg til bruker</a
+  >
 </div>

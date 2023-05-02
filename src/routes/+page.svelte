@@ -53,10 +53,10 @@
       <h1 class="py-2 text-4xl font-bold text-left text-main">Avgift</h1>
     </button>
     <a
-      href="/bruker"
+      href="/toppliste"
       class="grid items-center px-4 py-2 text-xl font-bold text-left text-gray-200 bg-gray-600 rounded place-items-center"
     >
-      Brukere
+      Toppliste
     </a>
   </div>
   <ul
