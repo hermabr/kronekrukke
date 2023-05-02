@@ -111,7 +111,7 @@
     </div>
     <div>
       <label for="comment" class="block mb-2 text-lg font-medium"
-        >Comment:</label
+        >Utsagn:</label
       >
       <input
         type="text"
@@ -122,7 +122,7 @@
       />
     </div>
     <div>
-      <label for="amount" class="block mb-2 text-lg font-medium">Amount:</label>
+      <label for="amount" class="block mb-2 text-lg font-medium">Antall fortredelser:</label>
       <input
         type="number"
         name="amount"
@@ -135,20 +135,13 @@
       <button
         type="submit"
         class="flex-1 px-8 py-4 font-semibold text-gray-200 bg-blue-500 rounded"
-        >Update</button
+        >Oppdater</button
       >
       <button
         type="button"
         class="flex-1 px-8 py-4 font-semibold text-gray-200 bg-red-500 rounded"
-        on:click={handleDelete}>Delete</button
+        on:click={handleDelete}>Slett</button
       >
     </div>
   </form>
-  <!-- <div class="mt-3">
-    <button
-      type="button"
-      class="px-8 py-4 bg-red-600 rounded"
-      on:click={handleDelete}>Delete</button
-    >
-  </div> -->
 </div>
