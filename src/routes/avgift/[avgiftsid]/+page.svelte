@@ -19,7 +19,7 @@
   const handleFormSubmit = async (event: Event) => {
     event.preventDefault();
 
-    const loadingToast = toast.loading("Updating fee...", {
+    const loadingToast = toast.loading("Oppdaterer avgift...", {
       position: "bottom-center",
     });
 
@@ -52,10 +52,10 @@
   };
 
   const handleDelete = async () => {
-    const confirmation = confirm("Are you sure you want to delete this fee?");
+    const confirmation = confirm("Er du sikker på at du vil slette avgiften?");
     if (!confirmation) return;
 
-    const loadingToast = toast.loading("Deleting fee...", {
+    const loadingToast = toast.loading("Sletter avgift...", {
       position: "bottom-center",
     });
 
@@ -110,8 +110,7 @@
       {/each}
     </div>
     <div>
-      <label for="comment" class="block mb-2 text-lg font-medium"
-        >Utsagn:</label
+      <label for="comment" class="block mb-2 text-lg font-medium">Utsagn:</label
       >
       <input
         type="text"
@@ -122,7 +121,9 @@
       />
     </div>
     <div>
-      <label for="amount" class="block mb-2 text-lg font-medium">Antall fortredelser:</label>
+      <label for="amount" class="block mb-2 text-lg font-medium"
+        >Antall fortredelser:</label
+      >
       <input
         type="number"
         name="amount"
