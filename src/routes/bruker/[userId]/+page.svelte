@@ -40,7 +40,7 @@
   <div class="flex justify-between">
     <button on:click={() => goto("/", { invalidateAll: true })}>
       <h1 class="py-2 text-4xl font-bold text-left text-main">
-        {user ? user.name : "Avgifter ukjent bruker"}
+        {user ? user.name.replace(/ .*/,'') : "Avgifter ukjent bruker"}
       </h1>
     </button>
     <a
