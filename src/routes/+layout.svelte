@@ -26,7 +26,7 @@
 
 <Toaster />
 
-<!-- {#if $page.data.session}
+{#if $page.data.session}
   <slot />
 {:else}
   <div class="flex items-center justify-center h-screen px-5 space-x-5">
@@ -52,6 +52,6 @@
       </p>
     </button>
   </div>
-{/if} -->
+{/if}
 
-<slot />
+<!-- <slot /> -->
