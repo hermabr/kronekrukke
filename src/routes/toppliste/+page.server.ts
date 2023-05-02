@@ -3,21 +3,34 @@ import prisma from "$lib/prisma";
 import { fail } from "@sveltejs/kit";
 
 export const load: PageServerLoad = async () => {
-  return {
-    leaderboard:
-      await prisma.$queryRaw`SELECT R.id, R.name, COALESCE(R.count, 0) AS count,
-       (SELECT COUNT(*) FROM 
-        (SELECT U.id, U.name, COUNT(F.userId) AS count
-         FROM User U
-         LEFT JOIN Fee F ON F.userId = U.id
-         GROUP BY U.id, U.name) AS T
-        WHERE T.count > COALESCE(R.count, 0)) + 1 AS userRank
-FROM
-  (SELECT U.id AS id, U.name AS name, COUNT(F.userId) AS count
+  const leaderboard: {
+    id: number;
+    navn: string;
+    avgifter: number | object;
+    rank?: number;
+  }[] =
+    await prisma.$queryRaw`SELECT U.id AS id, U.name AS navn, COALESCE(SUM(F.amount), 0) AS avgifter
    FROM User U
    LEFT JOIN Fee F ON F.userId = U.id
-   GROUP BY U.id, U.name) AS R
-ORDER BY R.count DESC;`,
+   GROUP BY U.id, U.name
+ORDER BY avgifter DESC;
+`;
+
+  let rank = 0;
+  let skips = 0;
+  leaderboard.forEach((curr, idx) => {
+    curr.avgifter = Number(curr.avgifter);
+
+    const prev = leaderboard[idx - 1];
+
+    rank = prev && curr.avgifter === prev.avgifter ? rank : rank + skips + 1;
+    skips = curr.avgifter === (prev && prev.avgifter) ? skips + 1 : 0;
+
+    curr.rank = rank;
+  });
+
+  return {
+    leaderboard,
   };
 };
 

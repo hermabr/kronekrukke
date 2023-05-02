@@ -58,14 +58,14 @@
       </tr>
     </thead>
     <tbody class="text-white">
-      {#each leaderboard as { id, userRank, name, count }}
+      {#each leaderboard as { id, rank, navn, avgifter }}
         <tr
           class="bg-gray-600 odd:bg-gray-700 hover:bg-gray-400 hover:cursor-pointer"
           on:click={() => goto(`/bruker/${id}`)}
         >
-          <td class="px-4 py-2">{userRank}</td>
-          <td class="px-4 py-2">{name}</td>
-          <td class="px-4 py-2">{count}</td>
+          <td class="px-4 py-2">{rank}</td>
+          <td class="px-4 py-2">{navn}</td>
+          <td class="px-4 py-2">{avgifter}</td>
         </tr>
       {/each}
 
