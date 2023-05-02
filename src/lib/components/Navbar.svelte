@@ -8,7 +8,6 @@
 
   const navbarItems = [
     { name: "Hjem", url: "/" },
-    { name: "Brukere", url: "/bruker" },
     { name: "Toppliste", url: "/toppliste" },
   ];
 </script>
