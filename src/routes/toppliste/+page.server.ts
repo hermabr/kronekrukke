@@ -10,8 +10,8 @@ export const load: PageServerLoad = async () => {
     rank?: number;
   }[] =
     await prisma.$queryRaw`SELECT U.id AS id, U.name AS navn, COALESCE(SUM(F.amount), 0) AS avgifter
-   FROM User U
-   LEFT JOIN Fee F ON F.userId = U.id
+   FROM public."User" U
+   LEFT JOIN public."Fee" F ON F.userId = U.id
    GROUP BY U.id, U.name
 ORDER BY avgifter DESC;
 `;
