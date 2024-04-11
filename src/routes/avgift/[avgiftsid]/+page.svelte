@@ -29,7 +29,7 @@
     formData.append("amount", avgift.amount.toString());
     formData.append("addedBy", username);
 
-    const response = await fetch(`./${avgift.id}?/endreAvgift`, {
+    const response = await fetch(`/avgift/${avgift.id}?/endreAvgift`, {
       method: "POST",
       body: formData,
     }).then((r) => r.json());
@@ -62,7 +62,7 @@
     const formData = new FormData();
     formData.append("addedBy", username);
 
-    const response = await fetch(`./${avgift.id}?/slettAvgift`, {
+    const response = await fetch(`/avgift/${avgift.id}?/slettAvgift`, {
       method: "POST",
       body: formData,
     }).then((r) => r.json());
